@@ -1,0 +1,44 @@
+.container {
+  min-height: 370px;
+  width: 80%;
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 4px;
+  padding: 0px;
+
+  .main {
+    margin-top: 24px;
+    padding-left: 1%;
+
+    input {
+      width: 98%;
+    }
+
+    table {
+      text-align: center;
+      width: 98%;
+      margin-top: 24px;
+    }
+  }
+}
+
+.top {
+  height: 20%;
+  background-color: rgb(226, 226, 226);
+  padding: 20px 50px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    height: 44px;
+    width: 120px;
+  }
+}
+
+
+.modal-dialog.delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+}

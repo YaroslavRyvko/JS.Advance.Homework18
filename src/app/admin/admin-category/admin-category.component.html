@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="top">
+    <span>Category</span>
+    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addCategory"
+      (click)="resetValue()">Add</button>
+  </div>
+  <div class="main">
+    <input type="text" class="form-control" placeholder="filter category.." [(ngModel)]="searchCat" name="searchCat">
+    <div style="height: 24px; width: 98%; border-bottom: 1px solid lightgray;"></div>
+    <table class="table table-bordered align-middle">
+      <thead style="background-color: rgb(226, 226, 226);">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th style="width: 60%;"></th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cat of arrcategory | category: searchCat, index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{cat.name}}</td>
+          <td style="width: 60%;"></td>
+          <td><button class="btn btn-dark" (click)="editCategory(cat)" data-bs-toggle="modal"
+              data-bs-target="#editCategory">Edit</button></td>
+          <td><button class="btn btn-dark" (click)="deleteCategory(cat.id)" data-bs-toggle="modal"
+              data-bs-target="#deleteCategory">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="addCategoryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addCategoryLabel">Add category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" placeholder="name here.." [(ngModel)]="categoryName" name="categoryName"
+          (input)="addvalueChanged($event)">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" (click)="addCategory()" [disabled]="addstatus"
+          data-bs-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editCategory" tabindex="-1" aria-labelledby="editCategoryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editCategoryLabel">Edit category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" placeholder="name here.." [(ngModel)]="categoryName" name="categoryName"
+          (input)="editvalueChanged($event)">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="resetValue()">Close</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" [disabled]="savestatus"
+          (click)="updateCategory()">Save edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteCategory" tabindex="-1" aria-labelledby="deleteCategoryLabel" aria-hidden="true">
+  <div class="modal-dialog delete">
+    <div class="modal-content" style="width: 300px;">
+      <div class="modal-body d-flex justify-content-between" style="width: 300px;">
+        <input type="button" value="Dismiss" class="btn btn-dark" data-bs-dismiss="modal" style="width: 45%;">
+        <input type="button" value="Delete" class="btn btn-danger" data-bs-dismiss="modal"
+          (click)="confirmDeleteCategory()" style="width: 45%;">
+      </div>
+    </div>
+  </div>
+</div>

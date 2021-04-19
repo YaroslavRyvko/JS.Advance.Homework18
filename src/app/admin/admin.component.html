@@ -1,0 +1,17 @@
+<div class="container-fluid mb-3 mt-3">
+    <div class="row">
+      <div class="col">
+        <div class="d-flex align-items-start">
+          <div class="nav flex-column nav-pills me-3">
+            <button [routerLink]="[ 'category' ]" routerLinkActive="active" class="nav-link" type="button">Категорії</button>
+            <button [routerLink]="[ 'product' ]" routerLinkActive="active" class="nav-link" type="button">Продукти</button>
+            <button [routerLink]="[ 'promotion' ]" routerLinkActive="active" class="nav-link" type="button">Акції</button>
+            <button [routerLink]="[ 'order' ]" routerLinkActive="active" class="nav-link" type="button">Замовлення</button>
+          </div>
+          <div class="tab-content col-10" id="v-pills-tabContent">
+              <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
